@@ -1,6 +1,9 @@
 # VS Code
 .vscode/
 
+# 测试的输出文件
+output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -130,3 +133,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# 上传所有资源文件
+!assets/
