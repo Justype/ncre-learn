@@ -8,6 +8,8 @@
 
 `NumPy`是`SciPy`、`Pandas`等数据处理或科学计算库的基础
 
+完全是重学线性代数
+
 ## 维度
 
 维度：一组数据的组织形式
@@ -265,3 +267,95 @@ xx_like ：根据已有数组的形状生成一个数组
 ### 运算
 
 #### 标量
+
+数组与标量计算为：数组中的每个元素与该标量进行计算
+
+一元函数 | 说明
+-- | --
+`np.rint(x)`  | 计算数组各元素的四舍五入值
+`np.modf(x)`  | 将数组各元素的小数和整数部分以两个独立数组形式返回
+`np.cos(x)` `np.cosh(x)` |
+`np.sin(x)` `np.sinh(x)` | 计算数组各元素的普通型和双曲型三角函数
+`np.tan(x)` `np.tanh(x)` |
+`np.exp(x)` | 计算数组各元素的指数值
+`np.sign(x)` | 计算数组各元素的符号值，1(+), 0, ‐1(‐)
+
+二元 | 说明
+--|--
+`+ - * / **` | 两个数组各元素进行对应运算
+`np.maximum(x,y) np.fmax()` | 元素级的最大值计算
+`np.minimum(x,y) np.fmin()` | 元素级的最小值计算
+`np.mod(x,y)` | 元素级的模运算
+`np.copysign(x,y)` | 将数组y中各元素值的符号赋值给数组x对应元素
+`> < >= <= == !=` | 算术比较，产生布尔型数组
+
+## 文件读写
+
+## csv
+
+CSV (Comma‐Separated Value, 逗号分隔值)
+
+`np.savetxt(frame, array, fmt='%.18e', delimiter=None)`
+- frame : 文件、字符串或产生器()，可以是.gz或.bz2的压缩文件
+- array : 存入文件的数组
+- fmt : 写入文件的格式，例如：%d %.2f %.18e
+- delimiter : 分割字符串，默认是任何空格
+
+`np.loadtxt(frame, dtype=np.float, delimiter=None， unpack=False)`
+- frame : 文件、字符串或产生器，可以是.gz或.bz2的压缩文件
+- dtype : 数据类型，可选
+- delimiter : 分割字符串，默认是任何空格
+- unpack : 如果True，读入属性将分别写入不同变量
+
+局限性：只能一二维
+
+## 多维
+
+写入的文件里没有维度信息，读取的时候要`reshape((对应结构))`
+
+`a.tofile(frame, sep='', format='%s')`
+- frame : 文件、字符串
+- sep : 数据分割字符串，如果是空串，写入文件为二进制
+- format : 写入数据的格式
+
+`np.fromfile(frame, dtype=float, count=‐1, sep='')`
+- frame : 文件、字符串
+- dtype : 读取的数据类型
+- count : 读入元素个数，‐1表示读入整个文件
+- sep : 数据分割字符串，如果是空串，写入文件为二进制
+
+### NumPy自定义格式
+
+`np.save(fname, array) 或 np.savez(fname, array)`
+- fname : 文件名，以.npy为扩展名，压缩扩展名为.npz
+- array : 数组变量
+
+`np.load(fname)`
+- fname : 文件名，以.npy为扩展名，压缩扩展名为.npz
+
+## 随机数
+
+### 按值产生数组
+
+函数 | 说明
+-- | --
+`rand(d0,d1,..,dn)` | 根据d0‐dn创建随机数数组，浮点数，[0,1)，均匀分布
+`randn(d0,d1,..,dn)` | 根据d0‐dn创建随机数数组，标准正态分布
+`randint(low[,high,shape])` | 根据shape创建随机整数或整数数组，范围是[low, high)
+`seed(s)` | 随机数种子，s是给定的种子值
+
+### 打乱数组，抽取元素
+
+函数 | 说明
+-- | --
+`shuffle(a)` | 根据数组a的第1轴进行随排列，改变数组x
+`permutation(a)` | 根据数组a的第1轴产生一个新的乱序数组，不改变数组x
+`choice(a[,size,replace,p])` | 从一维数组a中以概率p抽取元素，形成size形状新数组 replace表示是否可以重用元素，默认为True，使用重复元素
+
+### 生成对应分布的数组
+
+函数 | 说明
+-- | --
+`uniform(low,high,size)` | 产生具有均匀分布的数组,low起始值,high结束值
+`normal(loc,scale,size)` | 产生具有正态分布的数组,loc均值,scale标准差
+`poisson(lam,size)` | 产生具有泊松分布的数组,lam随机事件发生率
