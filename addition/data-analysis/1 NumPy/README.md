@@ -359,3 +359,11 @@ CSV (Comma‐Separated Value, 逗号分隔值)
 `uniform(low,high,size)` | 产生具有均匀分布的数组,low起始值,high结束值
 `normal(loc,scale,size)` | 产生具有正态分布的数组,loc均值,scale标准差
 `poisson(lam,size)` | 产生具有泊松分布的数组,lam随机事件发生率
+
+## 梯度函数
+
+`np.gradient(f)` 计算数组f中元素的梯度，当f为多维时，返回每个维度梯度
+
+梯度：连续值之间的变化率，即斜率，**在多媒体运算中发现边缘**
+- XY坐标轴连续三个X坐标对应的Y轴值：a, b, c，其中，b的梯度是： (c‐a)/2
+- 只有一侧，使用自身的值 除以 1
