@@ -1,10 +1,10 @@
 # 数据分析 与 展示
 
-库 | 类
--- | --
-NumPy | ndarray
-Matplotlib | pyplot
-Pandas | series
+库 | 干啥 | 文档地址
+-- | -- | --
+NumPy | n维数组 | https://numpy.org/doc/
+Matplotlib | pyplot | https://matplotlib.org/stable/contents.html
+Pandas | series | 
 
 掌握：表示、清晰、统计、展示数据
 
